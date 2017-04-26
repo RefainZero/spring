@@ -1,0 +1,99 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:util="http://www.springframework.org/schema/util"
+	xmlns:p="http://www.springframework.org/schema/p"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+		http://www.springframework.org/schema/util http://www.springframework.org/schema/util/spring-util-4.3.xsd">
+	<!-- 通过属性配置bean -->
+	<bean id="car1" class="com.spring.bean.config.Car">
+		<property name="brand" value="Audi"></property>
+		<property name="colour" value="red"></property>
+		<property name="price" value="200000"></property>
+		<property name="maxSpeed" value="350"></property>
+	</bean>
+	<!-- 通过构造器配置bean -->
+	<bean id="car2" class="com.spring.bean.config.Car">
+		<constructor-arg name="brand" value="大众"></constructor-arg>
+		<constructor-arg name="colour" value="black"></constructor-arg>
+		<constructor-arg name="price" value="30000"></constructor-arg>
+	</bean>
+	<!--特殊字符输入情况,使用CDATA  -->
+	<bean id="car3" class="com.spring.bean.config.Car">
+		<constructor-arg name="brand">
+			<value><![CDATA[!@@kdmnd]]></value>
+		</constructor-arg>
+	<constructor-arg name="colour" value="black"></constructor-arg>
+	<constructor-arg name="price" value="30000"></constructor-arg>
+	</bean>
+	<!-- 测试bean之间的引用 -->
+	<bean id="user" class="com.spring.bean.config.UserInfo">
+		<property name="name" value="jack"></property>
+		<property name="age" value="21"></property>
+		<property name="car" ref="car1"></property>
+	</bean>
+	<!-- 测试赋值null情况 -->
+	<bean id="user1" class="com.spring.bean.config.UserInfo">
+		<constructor-arg name="name" value="null"></constructor-arg>
+		<constructor-arg name="age" value="16"></constructor-arg>
+		<constructor-arg ><null></null></constructor-arg>
+	</bean>
+	<!-- 内部bean的配置使用 -->
+	<bean id="user2" class="com.spring.bean.config.UserInfo">
+		<constructor-arg name="name" value="内部bean"></constructor-arg>
+		<constructor-arg name="age" value="16"></constructor-arg>
+		<constructor-arg >
+		<!-- 内部 bean，不需要id，因内部bean不能被外部引用-->
+			<bean class="com.spring.bean.config.Car">
+				<property name="brand" value="日本"></property>
+				<property name="colour" value="red"></property>
+				<property name="price" value="500000"></property>
+				<property name="maxSpeed" value="350"></property>
+			</bean>
+		</constructor-arg>
+	</bean>
+	<!-- list集合配置bean -->
+	<bean id="vipUser" class="com.spring.bean.config.VipUser">
+		<property name="name" value="vipUser"></property>
+		<property name="age" value="18"></property>
+		<property name="car">
+			<list>
+				<ref bean="car1"/>
+				<ref bean="car2"/>
+			</list>
+		</property>
+	</bean> 
+	<!-- 测试map配置bean -->
+	<bean id="boundCustomer" class="com.spring.bean.config.BoundCustomer">
+		<property name="name" value="boundCustomer"></property>
+		<property name="age" value="26"></property>
+		<property name="cars">
+			<map>
+				<entry key="jack" value-ref="car1"></entry>
+				<entry key="lucy" value-ref="car2"></entry>
+			</map>
+		</property>
+	</bean>
+	<!-- 配置共有集合bean --> 
+	<util:list id="carsList">
+		<ref bean="car1"/>
+		<ref bean="car3"/>
+	</util:list>
+	<!-- p标签使用，测试共有集合bean -->
+	<bean id="vipUserUtilList" class="com.spring.bean.config.VipUser" p:name="vipUserlist" p:age="22">
+		<property name="car" ref="carsList"></property>
+	</bean>
+	<!-- spring的Properties配置 -->
+	<bean id="properties" class="com.spring.bean.config.DataSource">
+		<property name="properties">
+			<props>
+				<prop key="user">root</prop>
+				<prop key="password">123456</prop>
+				<prop key="jdbcUrl">jdbc:mysql://127.0.0.1:3306/scutcs</prop>
+				<prop key="driverClass">com.mysql.jdbc.Driver</prop>
+			</props>
+		</property>
+	</bean>
+	
+
+</beans>

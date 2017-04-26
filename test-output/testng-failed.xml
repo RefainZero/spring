@@ -3,7 +3,16 @@
 <suite guice-stage="DEVELOPMENT" name="Failed suite [Default suite]">
   <test verbose="2" name="Default test">
     <classes>
-      <class name="com.spring.collection.MainTest"/>
+      <class name="com.spring.bean.autowire.MainTest"/>
     </classes>
   </test> <!-- Default test -->
+  <test name="Default test(failed)">
+    <classes>
+      <class name="com.spring.bean.autowire.MainTest">
+        <methods>
+          <include name="testConfig"/>
+        </methods>
+      </class> <!-- com.spring.bean.autowire.MainTest -->
+    </classes>
+  </test> <!-- Default test(failed) -->
 </suite> <!-- Failed suite [Default suite] -->

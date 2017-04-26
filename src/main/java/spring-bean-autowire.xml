@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:p="http://www.springframework.org/schema/p"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+	<!-- 配置car的bean -->
+	<bean id="car" class="com.spring.bean.autowire.Car" p:brand="Audi" p:colour="black" p:maxSpeed="260" p:price="30000"></bean>
+	<!-- 配置street的bean -->
+	<bean id="street" class="com.spring.bean.autowire.Street" p:cityName="beijing" p:streetName="wudaokou"></bean>
+	<!-- 配置用户信息userinfo -->
+	<bean id="userInfo" class="com.spring.bean.config.UserInfo"  p:name="xiaoqiang" p:age="211" autowire="byType"></bean>
+</beans>
