@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testng-results skipped="0" failed="0" total="1" passed="1">
+  <reporter-output>
+  </reporter-output>
+  <suite name="Default suite" duration-ms="344" started-at="2017-04-26T00:57:41Z" finished-at="2017-04-26T00:57:42Z">
+    <groups>
+    </groups>
+    <test name="Default test" duration-ms="344" started-at="2017-04-26T00:57:41Z" finished-at="2017-04-26T00:57:42Z">
+      <class name="com.spring.collection.MainTest">
+        <test-method status="PASS" signature="test()[pri:0, instance:com.spring.collection.MainTest@5c0c0d45]" name="test" duration-ms="332" started-at="2017-04-26T08:57:41Z" finished-at="2017-04-26T08:57:42Z">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- test -->
+      </class> <!-- com.spring.collection.MainTest -->
+    </test> <!-- Default test -->
+  </suite> <!-- Default suite -->
+</testng-results>
