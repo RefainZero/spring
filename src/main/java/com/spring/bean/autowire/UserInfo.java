@@ -2,27 +2,14 @@ package com.spring.bean.autowire;
 
 public class UserInfo {
 
-	private String name;;
-	private int age;
-	private Street street;
+	private String name;
 	private Car car;
+	private Address address;
 	public String getName() {
 		return name;
 	}
 	public void setName(String name) {
 		this.name = name;
-	}
-	public int getAge() {
-		return age;
-	}
-	public void setAge(int age) {
-		this.age = age;
-	}
-	public Street getStreet() {
-		return street;
-	}
-	public void setStreet(Street street) {
-		this.street = street;
 	}
 	public Car getCar() {
 		return car;
@@ -30,9 +17,15 @@ public class UserInfo {
 	public void setCar(Car car) {
 		this.car = car;
 	}
+	public Address getAddress() {
+		return address;
+	}
+	public void setAddress(Address address) {
+		this.address = address;
+	}
 	@Override
 	public String toString() {
-		return "UserInfo [name=" + name + ", age=" + age + ", street=" + street
-				+ ", car=" + car + "]";
+		return "UserInfo [name=" + name + ", car=" + car + ", address="
+				+ address + "]";
 	}
 }

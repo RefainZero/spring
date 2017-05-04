@@ -3,10 +3,17 @@
 	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 	xmlns:p="http://www.springframework.org/schema/p"
 	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
-	<!-- 配置car的bean -->
-	<bean id="car" class="com.spring.bean.autowire.Car" p:brand="Audi" p:colour="black" p:maxSpeed="260" p:price="30000"></bean>
-	<!-- 配置street的bean -->
-	<bean id="street" class="com.spring.bean.autowire.Street" p:cityName="beijing" p:streetName="wudaokou"></bean>
-	<!-- 配置用户信息userinfo -->
-	<bean id="userInfo" class="com.spring.bean.config.UserInfo"  p:name="xiaoqiang" p:age="211" autowire="byType"></bean>
+	<!--自动装配的缺点：
+		若使用autowire装配bean ，则会装配全部属性；
+		autoName和autoType不能混合使用；
+		实际项目一般少用到  -->
+	<bean id="car" class="com.spring.bean.autowire.Car" p:brand="宝马" p:price="300000"></bean>
+	<bean id="address" class="com.spring.bean.autowire.Address" p:city="beijing" p:street="wudaokou"></bean>
+	<bean id="address1" class="com.spring.bean.autowire.Address" p:city="bei" p:street="jing"></bean>
+	<!-- <bean id="user" class="com.spring.bean.autowire.UserInfo" p:name="xiaoqiang" p:address-ref="address" p:car-ref="car"></bean> -->
+	<!-- 自动装配【通过姓名装配】 bean名称与属性名称不一致时，为null-->
+	<!-- 	<bean id="user" class="com.spring.bean.autowire.UserInfo" p:name="xiaoqiang" autowire="byName"></bean> -->
+	<!-- 自动装配【通过类型装配】 弱若存在多个bean,通过类型装配会抛异常-->
+	<bean id="user" class="com.spring.bean.autowire.UserInfo" p:name="xiaoqiang" autowire="byType"></bean>
+
 </beans>
