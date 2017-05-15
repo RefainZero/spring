@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:p="http://www.springframework.org/schema/p"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+	<bean id="address"  p:city="beijing" p:street="wudaokou" abstract="true"></bean>
+	<!-- 继承关系
+	1 可使用<bean>的parent属性配置继承父类（模板）
+	2 子bean可以继承父bean的属性，也可以覆盖部分属性
+	3 父bean可以作为实例，也可以作为模板，可以设置<bean>的abstract=true，则该bean为抽象bean，
+	不能被实例化，
+	4 父bean若没有设置任何属性，则默认为abstract -->
+	<!-- bean的继承 -->
+	<!-- 如果一个bean没有指定属性，那么这个bean必为抽象bean  --> 
+	<!-- 抽象bean不允许被初始化 -->
+	<bean id="address2" class="com.spring.bean.autowire.Address" parent="address" p:city="shenyang"></bean>
+	<!-- 依赖实例必须先执行 -->
+	<bean id="car" class="com.spring.bean.autowire.Car" p:brand="宝马" p:price="300000"></bean>
+	<!-- Spring的依赖通常depends-on常常应用在上面的场景中。如果DAO depend-on Database的同时需要得到Database的实例，那么使用构造函数注入是一个比较好的解决办法。因为构造函数注入的方式是要先实例化目标对象依赖的对象然后在实例化目标对象。 -->
+	<bean id="user" class="com.spring.bean.autowire.UserInfo" p:name="xiaoqiang" p:address-ref="address2" depends-on="car"></bean>
+	
+</beans>
