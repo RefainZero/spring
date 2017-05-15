@@ -6,6 +6,7 @@ import org.testng.annotations.Test;
 
 public class MainTest {
 
+	@SuppressWarnings("resource")
 	@Test
 	public void testConfig(){
 //		创建spring的IOC容器
