@@ -1,8 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <beans xmlns="http://www.springframework.org/schema/beans"
-	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-	xmlns:p="http://www.springframework.org/schema/p"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:p="http://www.springframework.org/schema/p"
 	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
 	<!-- 使用spel表达式为属性附上字面值 -->
-	<bean id="car" class="com.spring.bean.spel.Car" p:brand="red" p:price="#{3.14}" p:circle="#{T(java.lang.Math).PI*80}" p:info="#{4>1?'a':2}"/>
+	<!-- 配置car -->
+	<bean id="car" class="com.spring.bean.spel.Car" p:brand="#{'Audi'}"
+		p:city="#{'JaPan'}" p:circle="#{T(java.lang.Math).PI*80}" p:price="300000"></bean>
+	<!-- 使用spel表达式为 对象属性赋值 ，引用其他对象值 -->
+	<!-- 配置用户信息 -->
+	<bean id="user" class="com.spring.bean.spel.UserInfo" p:name="lucy"
+		p:car="#{car}" p:city="#{car.city}" p:info="#{car.price>1000000?'金陵王':'兰陵王'}"></bean>
 </beans>

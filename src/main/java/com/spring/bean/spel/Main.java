@@ -11,6 +11,8 @@ public class Main {
 		ApplicationContext ctx=new ClassPathXmlApplicationContext("spring-bean-spel.xml");
 		Car address=(Car) ctx.getBean("car");
 		System.out.println(address);
+		UserInfo user=(UserInfo) ctx.getBean("user");
+		System.out.println(user);
 	}
 
 }
