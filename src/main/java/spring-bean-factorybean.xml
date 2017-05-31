@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+	<!-- 通过静态工厂方法创建bean
+		class属性指向全类名
+		factory-method指向静态工厂方法名
+		使用<constructor-arg>元素为该方法传递方法参数
+	 --> 
+	<bean id="staticFactory" class="com.spring.bean.factory.StaticFactory" factory-method="getCar">
+		<constructor-arg value="audi"></constructor-arg>
+	</bean>
+	<!-- 通过实例工厂方法创建bean
+		 class属性指向实例工厂类
+		 factory-method指向实例工厂方法名
+		 使用<constructor-arg>元素为该方法传递方法参数
+		 step:
+			 1.先创建实例工厂的factorybean
+			 2.引用factorybean factory-method
+	 -->
+	<bean id="carFactoryBean" class="com.spring.bean.factory.CarFactoryBean"></bean>
+	<bean id="car" factory-bean="carFactoryBean" factory-method="getCar">
+		<constructor-arg value="ford"></constructor-arg>
+	</bean>
+</beans>
