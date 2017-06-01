@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:p="http://www.springframework.org/schema/p"
+	xmlns:context="http://www.springframework.org/schema/context"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-4.3.xsd">
+	<!-- 导入ioc自动装配扫描的包  -->
+	<!-- 可使用resource-pattern属性过滤特定的类，如果仅希望扫描特定的类而非基包下的所有类，、 -->
+	<!-- <context:component-scan base-package="com.spring.bean.annotation" resource-pattern="repository/*.class"></context:component-scan> -->
+	
+</beans>
