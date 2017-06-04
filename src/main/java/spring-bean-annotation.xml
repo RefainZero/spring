@@ -8,5 +8,16 @@
 	<!-- 导入ioc自动装配扫描的包  -->
 	<!-- 可使用resource-pattern属性过滤特定的类，如果仅希望扫描特定的类而非基包下的所有类，、 -->
 	<!-- <context:component-scan base-package="com.spring.bean.annotation" resource-pattern="repository/*.class"></context:component-scan> -->
-	
+	<context:component-scan base-package="com.spring.bean.annotation" use-default-filters="false">
+	<!-- <context:include-filter>子节点表示要包含的目标类
+　　　　<context:exclude-filter>子节点表示要排除在外的目标类
+　　　　<context:component-sacn>下可以拥有若干个<context:include-filter>和<context:exclude-filter>子节点 -->
+		<!-- context:exclude-filter指定扫描排除哪些表达式 -->
+		<!-- <context:exclude-filter type="annotation" expression="org.springframework.stereotype.Repository"/> -->
+		<!-- <context:include-filter 指定扫描指定表达式的 要配合包，但  use-default-filters="false"，为TRUE时为默认-->
+		<!-- <context:include-filter type="annotation" expression="org.springframework.stereotype.Repository"/> -->
+		<!-- type="assignable" 指定接口的全类名，去区别 -->
+		<!-- <context:exclude-filter type="assignable" expression="com.spring.bean.annotation.repository.UserRepository"/> -->
+		<context:include-filter type="assignable" expression="com.spring.bean.annotation.repository.UserRepository"/>
+	</context:component-scan>
 </beans>

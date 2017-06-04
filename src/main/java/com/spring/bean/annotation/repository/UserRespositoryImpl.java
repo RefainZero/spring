@@ -3,7 +3,7 @@ package com.spring.bean.annotation.repository;
 import org.springframework.stereotype.Repository;
 
 /**
- * 业务
+ * 业务层
  * @author Administrator
  *
  */
