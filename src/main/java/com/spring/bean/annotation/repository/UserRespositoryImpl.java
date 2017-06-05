@@ -7,7 +7,7 @@ import org.springframework.stereotype.Repository;
  * @author Administrator
  *
  */
-@Repository("userRespository")
+@Repository
 public class UserRespositoryImpl implements UserRepository {
 
 	@Override

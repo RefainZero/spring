@@ -14,12 +14,12 @@ public class Main {
 		ApplicationContext ctx = new ClassPathXmlApplicationContext("spring-bean-annotation.xml");
 //		TestObject testObject = (TestObject) ctx.getBean("testObject");
 //		System.out.println(testObject);
-//		UserController userController = (UserController) ctx.getBean("userController");
-//		System.out.println(userController);
+		UserController userController = (UserController) ctx.getBean("userController");
+		userController.execute();
 //		UserService userService = (UserService) ctx.getBean("userService");
 //		System.out.println(userService);
-		UserRepository userRespository = (UserRepository) ctx.getBean("userRespository");
-		System.out.println(userRespository);
+//		UserRepository userRespository = (UserRepository) ctx.getBean("userRespository");
+//		System.out.println(userRespository);
 	}
 
 }
