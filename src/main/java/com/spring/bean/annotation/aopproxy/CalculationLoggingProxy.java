@@ -11,7 +11,8 @@ public class CalculationLoggingProxy {
 	public CalculationLoggingProxy(Calculation target) {
 		// TODO Auto-generated constructor stub
 		this.target=target;
-	}
+	} 
+//	获得代理对象
 	public Calculation getCalculationLoggingProxy(){
 		Calculation proxy=null;
 //		指定代理对象由哪个类负责加载
@@ -28,10 +29,10 @@ public class CalculationLoggingProxy {
 //				日志
 				System.out.println("the method begins "+method.getName()+" "+Arrays.asList(args));
 //				执行的方法
-				method.invoke(target, args);
+				Object result = method.invoke(target, args);
 //				日志
-				System.out.println("the method ends "+method.getName()+" "+Arrays.asList(args));
-				return 0;
+				System.out.println("the method ends "+method.getName()+" "+Arrays.asList(args)+" "+result);
+				return result;
 			}
 		};
 		proxy=	(Calculation) Proxy.newProxyInstance(loader, interfaces, h);

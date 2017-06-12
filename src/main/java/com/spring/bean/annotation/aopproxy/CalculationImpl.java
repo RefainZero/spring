@@ -12,7 +12,7 @@ public class CalculationImpl implements Calculation {
 	@Override
 	public int div(int i, int j) {
 		// TODO Auto-generated method stub
-		int result=i+j;
+		int result=i/j;
 		return result;
 	}
 
